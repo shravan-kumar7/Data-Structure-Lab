@@ -69,7 +69,7 @@ void show()                //function to display the elements in the stack
     int i;
     if(top!=-1) 
     {
-        for(i=top; i>=0; i–) 
+        for(i=top; i>=0; i--) 
         {
             printf("%d\t",arr[i]);
         }
