@@ -1,0 +1,30 @@
+//binary search of an element
+#include<stdio.h>
+int bin(int arr[],int x, int low, int high)
+{
+    if(high>=low)
+    {    
+        int mid=(high+low)/2;
+        if(arr[mid]==x)
+            return mid;  //element present at mid
+        if(arr[mid]>x)    
+            return bin(arr,x,low,mid-1); //high will become mid-1
+        else 
+             return bin(arr,x,mid+1,high);  //low becomes mid+1
+    }
+    else return -1;
+}
+int main()
+{
+    int arr[]={1,2,3,4,5,6,7,8,9};
+    printf("enter element to be searched: ");
+    int x;
+    scanf("%d",&x); //element to be searched
+    int n;
+    n=sizeof(arr)/sizeof(arr[0]); //n is total no. of elements
+    int result=bin(arr,x,0,n-1);  
+    if (result==-1)
+        printf("element not found");
+    else
+    printf("element found at %d",result);
+}
