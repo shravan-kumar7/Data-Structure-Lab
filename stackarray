@@ -53,7 +53,7 @@ void push()        //function to push an element to the stack
     }
 }
 
-void pop()         //function to remove an element from the stack
+void pop()         //function to remove  element from the stack
 {
     if(top==-1)
         printf("underflow\n");
