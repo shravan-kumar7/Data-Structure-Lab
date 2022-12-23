@@ -1,80 +1,62 @@
-//Evation of postfix expression
+//evaluation of postfix 
 #include<stdio.h>
-#include<string.h>
 #include<ctype.h>
-#include<math.h>
-#define max 500
-
 int top=-1;
-char stack[max];
+int stack[20];
 
-void push(int x)  // function to push the element in the stack
+void push(int x)
 {
-  stack[++top]=x;
+    stack[++top]=x; //insering element
 }
-
-int pop() //function to remove element from the stack
+int pop()
 {
-
-    return stack[top--];
+    return stack[top--];  //returns the deleted element
 }
-
 int main()
 {
-    char exp[50], *e;
-    int a,b,c,num;
-    printf("Enter the postfix expression\n");
-    scanf("%s",exp);
-
-    e=exp;
-    while(*e!=0) 
+    char exp[20]; //input expression
+    char *e;
+    int n1,n2,n3,num;
+    printf("Enter the expression: "); 
+    scanf("%s",exp);  //expression entered in the form of string
+    e=exp;  //e points to first element of string
+    while(*e!=0)
     {
-
-        if(isdigit(*e)) // If the scanned character is an operand (number here),
-        // push it to the stack.
+        if(isdigit(*e))  //checks if the element is a digit
         {
-            num=(*e)-48;
-            push(num);
+            num=*e-48;   //converts the element into ascii value
+            push(num);   //number is pushed
         }
-        else  // If the scanned character is an operator, pop two
-        // elements from stack apply the operator
+        else
         {
-            a=pop();
-            b=pop();
-            switch(*e) // switch case to perform the operator operation
+            n1=pop();  //first top element is assigned to n1
+            n2=pop();  //second top element is assigned to n2
+            switch(*e)
             {
-            case '+':
-                c=b+a;
-                break;
-
-            case '-':
-                c=b-a;
-                break;
-
-            case '*':
-                c=b*a;
-                break;
-
-            case '/':
-                c=b/a;
-                break;
-
-            case '^':
-                c=pow(b,a);
-                break;
-
-            case '$':
-                c=pow(b,a);
-                break;
-
-            default:
-                printf("Invalid operators exist\n");
-                break;
+                case '+':   //addition
+                    n3=n2+n1;
+                    break;
+                
+                case '-': //subtraction
+                
+                    n3=n2-n1;
+                    break;
+                
+                case '*': //multiplication
+                
+                    n3=n2*n1;
+                    break;
+                
+                case '/':  //division
+                
+                    n3=n2/n1;
+                    break;
+                
             }
-            push(c);
+            push(n3); //push the element into stack
         }
-        e++;
+        e++; //increment e to next character of input string
     }
-    printf("Final answer is %d",pop());
+    printf("Result of %s is %d\n\n",exp,pop());
     return 0;
 }
