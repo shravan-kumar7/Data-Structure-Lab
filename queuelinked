@@ -1,0 +1,110 @@
+/*Design and implement a given type of queue in and demonstrate its working with suitable inputs. Display 
+appropriate messages in case of exception*/
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node  //declaring a structure    
+{
+    int data;
+    struct node *next;   //next pointer variable
+};
+struct node *front, *rear;  //declaring front and rear pointer variable
+
+
+void enqueue()
+{
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));   //allocating memory dynamically
+    int item;
+    printf("enter the element: ");
+    scanf("%d",&item);
+    ptr->data=item;         //pointer pointing to data is item  
+    ptr->next=NULL;         //next address will be null
+    if(front==NULL)
+    {
+        front=ptr;              //element inserted at front
+        rear=ptr;               
+        printf("%d element inserted\n",rear->data);
+    }
+    else
+    {
+        rear->next=ptr;     //element inserted at rear
+        rear=ptr;
+        printf("%d element inserted\n",rear->data);
+    }
+}
+
+
+void dequeue()
+{
+    struct node *ptr;
+    if(front==NULL)
+    {
+        printf("Queue is empty\n");   //queue underflow
+        return;
+    }
+    ptr=front;   //deleting front element
+    printf("%d is deleted\n",ptr->data);
+    front=front->next;      //front pointer is shifted to next element
+    free(ptr);   
+}
+
+
+
+void display()
+{
+    if(front==NULL)
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+    struct node *temp=front;  //temporary pointer pointing from front to rear
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;        //temp pointer is shifted to next element
+    }
+    printf("\n");
+}
+
+
+void peek()
+{
+    if(front==NULL)
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Peek element is %d\n",front->data);  //front element is displayed
+}
+int main()
+{
+    int choice,ele;
+
+    while(1)
+    {   
+        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Peek\n5.exit\n");
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            enqueue();
+            break;
+            case 2:
+            dequeue();
+            break;
+            case 3:
+            display();
+            break;
+            case 4:
+            peek();
+            break;
+            case 5:
+            exit(0);
+            default: printf("invalid option\n");
+            break;
+        }
+    }
+}
