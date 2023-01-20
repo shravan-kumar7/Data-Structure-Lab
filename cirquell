@@ -8,7 +8,7 @@
 };
     struct node *front=-1;
     struct node *rear=-1;
-    void enqueue(int x)
+    void enqueue(int x) //function to insert elements in queue
 {
     struct node* newnode;
     newnode=(struct node*)malloc(sizeof(struct node));
@@ -26,7 +26,7 @@
     rear->next=front;
 }
 }
-    void dequeue()
+    void dequeue() //function to delete an element from queue
 {
     struct node*temp;
     temp=front;
@@ -47,7 +47,7 @@
 }
 }
 
-    void display()
+    void display() //function to print elements
 {
     struct node *t;
     t=front;
@@ -63,14 +63,14 @@
        } while(t!=front);       
 }
 }
-    int main()
+    int main()  //main function
 {
     int choice,n,i,data;
     
     while(1)
 {
     printf("select the operation\n");
-    printf("\n1.insert\n2.delete\n3.display\n4.exit\n");
+    printf("\n1.insert\n2.delete\n3.display\n4.exit\n");  //menu driven function
    
     scanf("%d",&choice);
     switch(choice)
