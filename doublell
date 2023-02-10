@@ -1,3 +1,4 @@
+6a. Design and implement a dynamic linked list (double linked list) to store any information which needs a linear data structure.
 #include<stdio.h>  
 #include<stdlib.h>  
 struct node  
