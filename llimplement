@@ -1,3 +1,4 @@
+6a. Design and implement a dynamic linked list (single linked list) to store any information which needs a linear data structure.
 //Linked List Implementation
 #include<stdio.h>
 #include<stdlib.h>
